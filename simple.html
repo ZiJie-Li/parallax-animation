@@ -4,10 +4,8 @@
 
 	<meta charset="utf-8">
 
-	<title>Parallax.js | Simple Example</title>
+	<title>Parallax Animation Simple Example</title>
 
-	<!-- Behavioral Meta Data -->
-	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 	<style>
@@ -23,8 +21,8 @@
 			position: relative;
 			height: 1000px;
 		}
-		h1.giantmantext {
-		    visibility: hidden;
+		h1.giant {
+		    visibility: visible;
 		    margin: 0;
 		    -webkit-transform: rotateZ(90deg);
 		    transform: rotateZ(90deg);
@@ -35,22 +33,22 @@
 		    font-weight: 700;
 		    position: absolute;
 		    top: 60px;
-		    color: #272727;
+		    color: #BB2262;
 		    letter-spacing: -5px;
 		}
-		h1.giantmantext.giant-2016 {
+		h1.giant.i{
 	        top: -50px;
-	        left: 100px;
+	        left: 220px;
 	    }
-	    h1.giantmantext.giant-2015 {
+	    h1.giant.love {
+	        top: 10px;
+	        left: 350px;
+	        font-size: 140px;
+	    }
+	    h1.giant.taiwan {
 	        top: 100px;
-	        left: 450px;
+	        left: 500px;
 	        font-size: 120px;
-	    }
-	    h1.giantmantext.giant-2014 {
-	        top: 150px;
-	        left: 800px;
-	        font-size: 160px;
 	    }
 	</style>
 
@@ -58,22 +56,36 @@
 <body>
 
 	<div id="container" class="container">
-		<div class="parallaxy-animate" parallaxy-options='{"multiplier":"0.8", "direction":"up", "positionType": "relative"}'>
-                <h1 class="giantmantext giant-2016" id="year2016">20<span>16</span></h1>
+		<div class="parallax-animate"  data-parallax-multiplier="0.8" data-parallax-direction="up" data-parallax-positionType="absolute">
+                <h1 class="giant i">I</h1>
         </div>
 
-        <div class="parallaxy-animate" parallaxy-options='{"multiplier":"0.9", "direction":"down", "positionType": "relative"}'>
-                <h1 class="giantmantext giant-2015" id="year2015">20<span>15</span></h1>
+        <div class="parallax-animate" data-parallax-multiplier="1.0" data-parallax-direction="up" data-parallax-positionType="absolute">
+                <h1 class="giant love">Love</h1>
         </div>
 
-        <div class="parallaxy-animate" parallaxy-options='{"multiplier":"0.7", "direction":"up", "positionType": "relative"}'>
-                <h1 class="giantmantext giant-2014" id="year2014">20<span>14</span></h1>
+        <div class="parallax-animate" data-parallax-multiplier="0.6" data-parallax-direction="down" data-parallax-positionType="absolute">
+                <h1 class="giant taiwan">Taiwan</h1>
         </div>
+
+        <button id="pause">pause</button>
+        <button id="restart">restart</button>
 	</div>
 
 	<script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
-	<script src="TweenMax.min.js"></script>
-	<script src="my.js"></script>
+	<script src="jquery-parallax-animation.js"></script>
+	<script>
+		$(function(){
+		    var parallax = $('.parallax-animate').parallaxAnimation();
+		    $('#pause').click(function(){
+		    	parallax.pause();
+		    });
+
+		    $('#restart').click(function(){
+		    	parallax.restart();
+		    });
+		});
+	</script>
 
 </body>
 </html>
