@@ -112,7 +112,7 @@
             var newDelta = (0 - (scrollTop * elements[i].options.multiplier));
             
             if(elements[i].options.direction == "down") {
-                newDelta = (0 + (scrollTop * elements[i].options.multiplier));
+                newDelta = (0 + (scrollTop * elements[i].options.multiplier / 2));
             }
             
             // figure out the tween.
